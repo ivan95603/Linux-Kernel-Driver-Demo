@@ -1,0 +1,1 @@
+cmd_/home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.ko := ld -r -m elf_x86_64 --build-id=sha1  -T scripts/module.lds -o /home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.ko /home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.o /home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.mod.o;  true
