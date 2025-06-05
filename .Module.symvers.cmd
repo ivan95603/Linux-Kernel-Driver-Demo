@@ -1,1 +1,0 @@
-cmd_/home/ivan/eclipse-workspace/scaleKernelDriver/Module.symvers := sed 's/\.ko$$/\.o/' /home/ivan/eclipse-workspace/scaleKernelDriver/modules.order | scripts/mod/modpost -m -a  -o /home/ivan/eclipse-workspace/scaleKernelDriver/Module.symvers -e -i Module.symvers   -T -
