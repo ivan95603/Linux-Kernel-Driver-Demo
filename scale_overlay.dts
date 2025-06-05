@@ -1,0 +1,52 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = <&spidev0>;
+        __overlay__ {
+            status = "disabled";
+        };
+    };
+
+    fragment@1 {
+        target = <&spi0>;
+        __overlay__ {
+            status = "okay";
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            mydevice@0 {
+                compatible = "ivan,ivanscale";
+                reg = <0>; /* CS0 */
+                spi-max-frequency = <100000>; /* 1 MHz */
+
+                /* GPIO mappings */
+                out-gpios = <&gpio 2 0>; /* GPIO2 as output */
+                irq-gpios = <&gpio 3 0>; /* GPIO3 as interrupt input */
+
+                /* Optional: interrupt parent and specifier */
+                interrupt-parent = <&gpio>;
+                interrupts = <3 2>; /* GPIO3, falling edge */
+
+                status = "okay";
+            };
+        };
+    };
+
+    fragment@2 {
+        target = <&gpio>;
+        __overlay__ {
+            pinctrl-names = "default";
+            pinctrl-0 = <&scale_pins>;
+
+            scale_pins: scale_pins {
+                brcm,pins = <2 3>; /* GPIO2 and GPIO3 */
+                brcm,function = <1 0>; /* Output, Input */
+                brcm,pull = <0 0>; /* No pull, No pull */
+            };
+        };
+    };
+};

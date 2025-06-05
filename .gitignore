@@ -17,6 +17,7 @@
 *.ko
 *.so
 *.so.dbg
+*.mod
 *.mod.c
 *.i
 *.lst
@@ -32,6 +33,7 @@ modules.builtin
 *.lzo
 *.patch
 *.gcno
+*.dtbo
 
 #
 # Top-level generic files
