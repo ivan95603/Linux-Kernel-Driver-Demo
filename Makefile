@@ -29,49 +29,26 @@ clean:
 
 # Install module and overlay
 install: all
-	sudo cp scaleKernel_driver.ko $(DRIVERS_DIR)/
+# sudo cp scaleKernel_driver.ko $(DRIVERS_DIR)/
 	sudo depmod -a
 	sudo cp $(DTB_FILE) /boot/overlays/
 	@echo "Add 'dtoverlay=scale_overlay' to /boot/config.txt to enable"
 
-# UnInstall everything
-uninstall:
-	rm -f /boot/overlays/$(DTB_FILE)
-	rm -f $(DRIVERS_DIR)/scaleKernel_driver.ko
-
 # Load dtbo
-dtinsert:
+dtapply:
 	sudo dtoverlay scale_overlay.dtbo
 
 # Load module
 load:
-	sudo modprobe scaleKernel_driver
+	sudo modprobe industrialio
+	sudo insmod scaleKernel_driver.ko
 
 # Unload module
 unload:
-	sudo modprobe -r scaleKernel_driver
+	sudo rmmod scaleKernel_driver
 
 # Display module info
 info:
 	modinfo scaleKernel_driver.ko
 
-.PHONY: all module dtbo clean install uninstall dtinsert load unload info
-
-
-# obj-m += scaleKernelDriver.o
- 
-
-# KDIR = /lib/modules/$(shell uname -r)/build
-
-# all: driver dt
-# 	echo Building driver and DTBO
-
-# dt: scale_overlay.dts
-# 	dtc -@ -I dts -O dtb -o scale_overlay.dtbo scale_overlay.dts
-
-# driver:
-# 	make -C $(KDIR)  M=$(shell pwd) modules
-
-# clean:
-# 	make -C $(KDIR)  M=$(shell pwd) clean
-# 	rm -rf scale_overlay.dtbo
+.PHONY: all module dtbo clean install dtinsert load unload info
