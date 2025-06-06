@@ -1,1 +1,0 @@
-cmd_/home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.mod := { echo  /home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.o;  echo; } > /home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.mod

@@ -1,1 +1,0 @@
-cmd_/home/ivan/eclipse-workspace/scaleKernelDriver/modules.order := {   echo /home/ivan/eclipse-workspace/scaleKernelDriver/scaleKernelDriver.ko; :; } | awk '!x[$$0]++' - > /home/ivan/eclipse-workspace/scaleKernelDriver/modules.order
